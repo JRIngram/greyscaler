@@ -23,9 +23,18 @@ class Pixel:
     def get_red(self):
         return self.rgb['red']
 
+    def set_red(self,red):
+        self.rgb['red'] = red
+
     def get_green(self):
         return self.rgb['green']
 
+    def set_green(self, green):
+        self.rgb['green'] = green
+
     def get_blue(self):
         return self.rgb['blue']
+
+    def set_blue(self, blue):
+        self.rgb['blue'] = blue
 

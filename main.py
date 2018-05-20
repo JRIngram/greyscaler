@@ -1,9 +1,11 @@
 from PIL import Image
 import pixel
 import greyscale_by_average
+import greyscale_by_max
 
 Pixel = pixel.Pixel
 GreyscaleByAverage = greyscale_by_average.GreyscaleByAverage
+GreyscaleByMax = greyscale_by_max.GreyscaleByMax
 pixelList = []
 
 
@@ -23,7 +25,7 @@ def create_pixel_list(image):
 
 '''
 Currently uses the averaging greyscale algorithm.
-Used as a proof-of-concept. 
+Used as a proof-of-concept.
 This is likely to be refactored to its own module along with more algorithms to allow the user to choose which greyscale algorithm to use.
 
 def greyscale_image(image):
@@ -43,17 +45,41 @@ print(im.format)
 print(im.size)
 print(im.mode)
 
-
+'''
+im = Image.open("img/test.jpg")
+# Greyscale by averaging
 AVGGreyscale = GreyscaleByAverage(im, create_pixel_list(im))
 AVGGreyscale.grey_pixels()
 greyed = AVGGreyscale.get_averagedPixels()
 greyedImage = AVGGreyscale.grey_image()
 greyedImage.show()
+im.close()
 
 
+# Greyscale by maxing green
+im = Image.open("img/test.jpg")
+maxGreen = GreyscaleByMax(im, create_pixel_list(im), "green")
+maxGreen.grey_pixels()
+greyed = maxGreen.get_greyed_pixels()
+greyedImage = maxGreen.grey_image()
+greyedImage.show()
+im.close()
 
+# Greyscale by maxing red
+im = Image.open("img/test.jpg")
+maxRed = GreyscaleByMax(im, create_pixel_list(im), "red")
+maxRed.grey_pixels()
+greyed = maxRed.get_greyed_pixels()
+greyedImage = maxRed.grey_image()
+greyedImage.show()
+im.close()
+'''
 
-
-
-
-
+# Greyscale by maxing blue
+im = Image.open("img/test.jpg")
+maxBlue = GreyscaleByMax(im, create_pixel_list(im), "blue")
+maxBlue.grey_pixels()
+greyed = maxBlue.get_greyed_pixels()
+greyedImage = maxBlue.grey_image()
+greyedImage.show()
+im.close()

@@ -32,16 +32,16 @@ def create_pixel_list(image):
             pixelList.append(list_pixel)
     return pixelList
 
-def rerun_program(image):
+def rerun_program():
         rerun = input("Would you like to greyscale using another algorithm? y/n\n> ")
         if(rerun == "y"):
-            main(image)
+            return True
         elif(rerun == "n"):
-            print("Exiting program...")
+            return False
         else:
             while(rerun != "y" and rerun != "n"):
                 print("Invalid input. Please enter 'y' to rerun the program or 'n' to exit the program.")
-                rerun_program(image)
+                rerun_program()
                 
             
 #Loads the original image
@@ -98,8 +98,12 @@ def main(image):
         
     else:
         print("Invalid choice")
-        
-    rerun_program(image)
+    
+    while(rerun_program() == True):
+        #Clears lists to stop memory leak.
+        pixelList.clear()
+        greyed.clear()
+        main(im)
 
 main(im)
 

@@ -48,20 +48,6 @@ def greyscale_image(image):
     return image
 '''
 
-
-#Activates menu for user choice.
-algorithmChoice = algorithm_menu()
-if(algorithmChoice == "1"):
-    print("Greyscale by average")
-elif(algorithmChoice == "2"):
-    print("Greyscale by max red")
-elif(algorithmChoice == "3"):
-    print("Greyscale by max blue")
-elif(algorithmChoice == "4"):
-    print("Greyscale by max green")
-else:
-    print("Invalid choice")
-
 #Loads the original image
 print("Loading image")
 im = Image.open("img/test.jpg")
@@ -70,44 +56,48 @@ print(im.format)
 print(im.size)
 print(im.mode)
 
+#Activates menu for user choice.
+algorithmChoice = algorithm_menu()
 
+if(algorithmChoice == "1"):
+    print("Greyscale by average")
+    AVGGreyscale = GreyscaleByAverage(im, create_pixel_list(im))
+    AVGGreyscale.grey_pixels()
+    greyed = AVGGreyscale.get_averagedPixels()
+    greyedImage = AVGGreyscale.grey_image()
+    greyedImage.show()
+    im.close()
+    
+elif(algorithmChoice == "2"):
+    print("Greyscale by max red")
+    im = Image.open("img/test.jpg")
+    maxRed = GreyscaleByMax(im, create_pixel_list(im), "red")
+    maxRed.grey_pixels()
+    greyed = maxRed.get_greyed_pixels()
+    greyedImage = maxRed.grey_image()
+    greyedImage.show()
+    im.close()
+    
+elif(algorithmChoice == "3"):
+    print("Greyscale by max blue")
+    im = Image.open("img/test.jpg")
+    maxBlue = GreyscaleByMax(im, create_pixel_list(im), "blue")
+    maxBlue.grey_pixels()
+    greyed = maxBlue.get_greyed_pixels()
+    greyedImage = maxBlue.grey_image()
+    greyedImage.show()
+    im.close()
+    
+elif(algorithmChoice == "4"):
+    print("Greyscale by max green")
+    im = Image.open("img/test.jpg")
+    maxGreen = GreyscaleByMax(im, create_pixel_list(im), "green")
+    maxGreen.grey_pixels()
+    greyed = maxGreen.get_greyed_pixels()
+    greyedImage = maxGreen.grey_image()
+    greyedImage.show()
+    im.close()
+    
+else:
+    print("Invalid choice")
 
-
-
-'''
-im = Image.open("img/test.jpg")
-# Greyscale by averaging
-AVGGreyscale = GreyscaleByAverage(im, create_pixel_list(im))
-AVGGreyscale.grey_pixels()
-greyed = AVGGreyscale.get_averagedPixels()
-greyedImage = AVGGreyscale.grey_image()
-greyedImage.show()
-im.close()
-
-
-# Greyscale by maxing green
-im = Image.open("img/test.jpg")
-maxGreen = GreyscaleByMax(im, create_pixel_list(im), "green")
-maxGreen.grey_pixels()
-greyed = maxGreen.get_greyed_pixels()
-greyedImage = maxGreen.grey_image()
-greyedImage.show()
-im.close()
-'''
-#Greyscale by maxing red
-im = Image.open("img/test.jpg")
-maxRed = GreyscaleByMax(im, create_pixel_list(im), "red")
-maxRed.grey_pixels()
-greyed = maxRed.get_greyed_pixels()
-greyedImage = maxRed.grey_image()
-greyedImage.show()
-im.close()
-
-# Greyscale by maxing blue
-im = Image.open("img/test.jpg")
-maxBlue = GreyscaleByMax(im, create_pixel_list(im), "blue")
-maxBlue.grey_pixels()
-greyed = maxBlue.get_greyed_pixels()
-greyedImage = maxBlue.grey_image()
-greyedImage.show()
-im.close()

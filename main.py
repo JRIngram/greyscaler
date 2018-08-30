@@ -8,7 +8,19 @@ GreyscaleByAverage = greyscale_by_average.GreyscaleByAverage
 GreyscaleByMax = greyscale_by_max.GreyscaleByMax
 pixelList = []
 
-
+def algorithm_menu():
+    validOptions = ["1", "2", "3", "4"]
+    print("Enter the corresponding number for the algorithm you would like to use to greyscale the image:")
+    print("\t1 Greyscale by average")
+    print("\t2 Greyscale by maximising red values.")
+    print("\t3 Greyscale by maximising blue values.")
+    print("\t4 Greyscale by maximising green values.")
+    choice = input("> ")
+    while(choice not in validOptions):
+        print("Invalid option selected. Please enter a valid number.\ne.g. if you would like to greyscale by average enter '1'")
+        choice = input("> ")
+    return choice
+    
 
 
 def create_pixel_list(image):
@@ -37,6 +49,19 @@ def greyscale_image(image):
 '''
 
 
+#Activates menu for user choice.
+algorithmChoice = algorithm_menu()
+if(algorithmChoice == "1"):
+    print("Greyscale by average")
+elif(algorithmChoice == "2"):
+    print("Greyscale by max red")
+elif(algorithmChoice == "3"):
+    print("Greyscale by max blue")
+elif(algorithmChoice == "4"):
+    print("Greyscale by max green")
+else:
+    print("Invalid choice")
+
 #Loads the original image
 print("Loading image")
 im = Image.open("img/test.jpg")
@@ -44,6 +69,10 @@ im.show()
 print(im.format)
 print(im.size)
 print(im.mode)
+
+
+
+
 
 '''
 im = Image.open("img/test.jpg")
@@ -64,8 +93,8 @@ greyed = maxGreen.get_greyed_pixels()
 greyedImage = maxGreen.grey_image()
 greyedImage.show()
 im.close()
-
-# Greyscale by maxing red
+'''
+#Greyscale by maxing red
 im = Image.open("img/test.jpg")
 maxRed = GreyscaleByMax(im, create_pixel_list(im), "red")
 maxRed.grey_pixels()
@@ -73,7 +102,6 @@ greyed = maxRed.get_greyed_pixels()
 greyedImage = maxRed.grey_image()
 greyedImage.show()
 im.close()
-'''
 
 # Greyscale by maxing blue
 im = Image.open("img/test.jpg")

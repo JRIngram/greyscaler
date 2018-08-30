@@ -20,8 +20,6 @@ def algorithm_menu():
         print("Invalid option selected. Please enter a valid number.\ne.g. if you would like to greyscale by average enter '1'")
         choice = input("> ")
     return choice
-    
-
 
 def create_pixel_list(image):
     for x in range(0, image.size[0]):
@@ -34,20 +32,18 @@ def create_pixel_list(image):
             pixelList.append(list_pixel)
     return pixelList
 
-
-'''
-Currently uses the averaging greyscale algorithm.
-Used as a proof-of-concept.
-This is likely to be refactored to its own module along with more algorithms to allow the user to choose which greyscale algorithm to use.
-
-def greyscale_image(image):
-    for pixel in pixelList:
-        average = round((pixel.get_red() + pixel.get_green() + pixel.get_blue()) / 3)
-        image.putpixel((pixel.get_x_coordinates(), pixel.get_y_coordinates()), (average, average, average))
-        print("AVERAGE = " + str(average) + "\n")
-    return image
-'''
-
+def rerun_program(image):
+        rerun = input("Would you like to greyscale using another algorithm? y/n\n> ")
+        if(rerun == "y"):
+            main(image)
+        elif(rerun == "n"):
+            print("Exiting program...")
+        else:
+            while(rerun != "y" and rerun != "n"):
+                print("Invalid input. Please enter 'y' to rerun the program or 'n' to exit the program.")
+                rerun_program(image)
+                
+            
 #Loads the original image
 print("Loading image")
 im = Image.open("img/test.jpg")
@@ -56,48 +52,55 @@ print(im.format)
 print(im.size)
 print(im.mode)
 
-#Activates menu for user choice.
-algorithmChoice = algorithm_menu()
+def main(image):
+    #Activates menu for user choice.
+    algorithmChoice = algorithm_menu()
 
-if(algorithmChoice == "1"):
-    print("Greyscale by average")
-    AVGGreyscale = GreyscaleByAverage(im, create_pixel_list(im))
-    AVGGreyscale.grey_pixels()
-    greyed = AVGGreyscale.get_averagedPixels()
-    greyedImage = AVGGreyscale.grey_image()
-    greyedImage.show()
-    im.close()
-    
-elif(algorithmChoice == "2"):
-    print("Greyscale by max red")
-    im = Image.open("img/test.jpg")
-    maxRed = GreyscaleByMax(im, create_pixel_list(im), "red")
-    maxRed.grey_pixels()
-    greyed = maxRed.get_greyed_pixels()
-    greyedImage = maxRed.grey_image()
-    greyedImage.show()
-    im.close()
-    
-elif(algorithmChoice == "3"):
-    print("Greyscale by max blue")
-    im = Image.open("img/test.jpg")
-    maxBlue = GreyscaleByMax(im, create_pixel_list(im), "blue")
-    maxBlue.grey_pixels()
-    greyed = maxBlue.get_greyed_pixels()
-    greyedImage = maxBlue.grey_image()
-    greyedImage.show()
-    im.close()
-    
-elif(algorithmChoice == "4"):
-    print("Greyscale by max green")
-    im = Image.open("img/test.jpg")
-    maxGreen = GreyscaleByMax(im, create_pixel_list(im), "green")
-    maxGreen.grey_pixels()
-    greyed = maxGreen.get_greyed_pixels()
-    greyedImage = maxGreen.grey_image()
-    greyedImage.show()
-    im.close()
-    
-else:
-    print("Invalid choice")
+    if(algorithmChoice == "1"):
+        print("Greyscale by average")
+        image = Image.open("img/test.jpg")
+        AVGGreyscale = GreyscaleByAverage(image, create_pixel_list(image))
+        AVGGreyscale.grey_pixels()
+        greyed = AVGGreyscale.get_averagedPixels()
+        greyedImage = AVGGreyscale.grey_image()
+        greyedImage.show()
+        image.close()
+        
+    elif(algorithmChoice == "2"):
+        print("Greyscale by max red")
+        image = Image.open("img/test.jpg")
+        maxRed = GreyscaleByMax(image, create_pixel_list(image), "red")
+        maxRed.grey_pixels()
+        greyed = maxRed.get_greyed_pixels()
+        greyedImage = maxRed.grey_image()
+        greyedImage.show()
+        image.close()
+        
+    elif(algorithmChoice == "3"):
+        print("Greyscale by max blue")
+        image = Image.open("img/test.jpg")
+        maxBlue = GreyscaleByMax(im, create_pixel_list(image), "blue")
+        maxBlue.grey_pixels()
+        greyed = maxBlue.get_greyed_pixels()
+        greyedImage = maxBlue.grey_image()
+        greyedImage.show()
+        image.close()
+        
+    elif(algorithmChoice == "4"):
+        print("Greyscale by max green")
+        image = Image.open("img/test.jpg")
+        maxGreen = GreyscaleByMax(image, create_pixel_list(image), "green")
+        maxGreen.grey_pixels()
+        greyed = maxGreen.get_greyed_pixels()
+        greyedImage = maxGreen.grey_image()
+        greyedImage.show()
+        image.close()
+        
+    else:
+        print("Invalid choice")
+        
+    rerun_program(image)
+
+main(im)
+
 

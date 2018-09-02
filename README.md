@@ -12,8 +12,11 @@ Install Pillow. For more information visit here: https://pillow.readthedocs.io/e
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/JRIngram/greyscaler/tags).
 
 ## Authors
 
 * **Jamie Ingram** - [JRIngram](https://github.com/JRIngram)
+
+### Acknowledgement
+This README is based off of [Purplebooth's](https://gist.github.com/PurpleBooth) Readme.md which can be found [here](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).

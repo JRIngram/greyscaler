@@ -57,7 +57,7 @@ def main(image):
     algorithmChoice = algorithm_menu()
 
     if(algorithmChoice == "1"):
-        print("Greyscale by average")
+        print("Greyscaling image by averaging the RGB values...")
         image = Image.open("img/test.jpg")
         AVGGreyscale = GreyscaleByAverage(image, create_pixel_list(image))
         AVGGreyscale.grey_pixels()
@@ -67,7 +67,7 @@ def main(image):
         image.close()
         
     elif(algorithmChoice == "2"):
-        print("Greyscale by max red")
+        print("Greyscaling image by maximising the red values... ")
         image = Image.open("img/test.jpg")
         maxRed = GreyscaleByMax(image, create_pixel_list(image), "red")
         maxRed.grey_pixels()
@@ -77,7 +77,7 @@ def main(image):
         image.close()
         
     elif(algorithmChoice == "3"):
-        print("Greyscale by max blue")
+        print("Greyscaling image by maximising the blue values... ")
         image = Image.open("img/test.jpg")
         maxBlue = GreyscaleByMax(im, create_pixel_list(image), "blue")
         maxBlue.grey_pixels()
@@ -87,7 +87,7 @@ def main(image):
         image.close()
         
     elif(algorithmChoice == "4"):
-        print("Greyscale by max green")
+        print("Greyscaling image by maximising the green values...")
         image = Image.open("img/test.jpg")
         maxGreen = GreyscaleByMax(image, create_pixel_list(image), "green")
         maxGreen.grey_pixels()
@@ -98,6 +98,8 @@ def main(image):
         
     else:
         print("Invalid choice")
+    
+    print("Greyscaling completed!\n")
     
     if(rerun_program() == True):
         #Clears lists to stop memory leak.

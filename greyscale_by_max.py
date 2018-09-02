@@ -13,7 +13,6 @@ class GreyscaleByMax(GreyscaleAlgorithm):
         else:
             print("An error has occurred.\nNo valid colour selected.\nDefaulting to max = red.")
             self.colourToMax = "RED"
-        print(self.colourToMax)
 
 
 
@@ -35,8 +34,6 @@ class GreyscaleByMax(GreyscaleAlgorithm):
             greyedPixels.append(maxedPixel)
 
         self.greyedPixels = greyedPixels
-        print(pixels[2500].get_rgb())
-        print(greyedPixels[2500].get_rgb())
 
     def get_greyed_pixels(self):
         return self.greyedPixels
